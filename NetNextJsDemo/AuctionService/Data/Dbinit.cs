@@ -49,7 +49,6 @@ namespace AuctionService.Data
                 Status = Status.Live,
                 ReservePrice = 90000,
                 Seller = "alice",
-                Winner = "alice2",
                 AuctionEnd = DateTime.UtcNow.AddDays(60),
                 Item = new Item
                 {
@@ -124,7 +123,6 @@ namespace AuctionService.Data
                 Status = Status.Live,
                 ReservePrice = 20000,
                 Seller = "bob",
-                Winner = "bob2",
                 AuctionEnd = DateTime.UtcNow.AddDays(45),
                 Item = new Item
                 {
@@ -143,7 +141,6 @@ namespace AuctionService.Data
                 Status = Status.Live,
                 ReservePrice = 150000,
                 Seller = "alice",
-                Winner = "alice2",
                 AuctionEnd = DateTime.UtcNow.AddDays(13),
                 Item = new Item
                 {
@@ -180,7 +177,6 @@ namespace AuctionService.Data
                 Status = Status.Live,
                 ReservePrice = 20000,
                 Seller = "tom",
-                Winner = "tom2",
                 AuctionEnd = DateTime.UtcNow.AddDays(20),
                 Item = new Item
                 {

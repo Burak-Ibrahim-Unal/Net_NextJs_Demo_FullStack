@@ -71,7 +71,7 @@ namespace AuctionService.Controllers
             var auction = await _auctionDbContext.Auctions.Include(x => x.Item).FirstOrDefaultAsync(x => x.Id == id);
 
             if (auction == null) return NotFound();
-            //TODO: add curent user as a seller
+            //TODO: add curent user as a seller and winner
 
             auction.Item.Make = updateAuctionDto.Make ?? auction.Item.Make;
             auction.Item.Model = updateAuctionDto.Model ?? auction.Item.Model;
@@ -85,6 +85,25 @@ namespace AuctionService.Controllers
                 return BadRequest("Couldnt update database");
 
             return Ok(); ;
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteAuction(Guid id)
+        {
+            var auction = await _auctionDbContext.Auctions.FindAsync(id);
+
+            if (auction == null) return NotFound();
+
+            //TODO: add curent user as a seller and winner
+
+            _auctionDbContext.Remove(auction);
+
+            var result = await _auctionDbContext.SaveChangesAsync() > 0;
+
+            if (!result)
+                return BadRequest("Couldnt update database");
+
+            return Ok(); 
         }
     }
 }
