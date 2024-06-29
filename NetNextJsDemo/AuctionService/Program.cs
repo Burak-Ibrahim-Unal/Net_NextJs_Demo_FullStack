@@ -10,6 +10,8 @@ builder.Services.AddDbContext<AuctionDbContext>(optionsAction: options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Postgresql"));
 });
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
