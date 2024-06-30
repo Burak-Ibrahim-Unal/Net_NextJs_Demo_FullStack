@@ -25,7 +25,7 @@ namespace SearchService.Data
             await using var scope = webApplication.Services.CreateAsyncScope();
             var httpClient = scope.ServiceProvider.GetRequiredService<AuctionServiceHttpClient>();
             var items = await httpClient.GetItemsForSearchDn();
-            Console.WriteLine(items.Count + "returned from the Auction Service");
+            Console.WriteLine(items.Count + " records returned from the Auction Service");
 
             if (items.Count > 0)
                 await DB.SaveAsync(items);
