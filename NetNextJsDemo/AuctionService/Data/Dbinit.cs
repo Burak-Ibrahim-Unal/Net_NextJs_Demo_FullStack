@@ -14,7 +14,7 @@ namespace AuctionService.Data
 
         private static void SeedData(AuctionDbContext auctionDbContext)
         {
-            auctionDbContext!.Database.Migrate();
+            auctionDbContext.Database.Migrate();
 
             if (auctionDbContext.Auctions.Any()) {
                 Console.WriteLine("There is auction data...Database update canceled");

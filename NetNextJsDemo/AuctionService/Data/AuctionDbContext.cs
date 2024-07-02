@@ -3,13 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AuctionService.Data
 {
-    public class AuctionDbContext : DbContext
+    public class AuctionDbContext(DbContextOptions options) : DbContext(options)
     {
-        public AuctionDbContext(DbContextOptions options) : base(options)
-        {
-
-        }
-
         public DbSet<Auction> Auctions { get; set; }
     }
 }
