@@ -42,7 +42,7 @@ namespace AuctionService.Controllers
         public async Task<ActionResult<AuctionDto>> CreateAuction(CreateAuctionDto createAuctionDto)
         {
             var auction = mapper.Map<Auction>(createAuctionDto);
-            //TODO: add curent user as a seller
+            //TODO: add current user as a seller
 
             auction.Seller = "testSeller";
             auction.Winner = "testWinner";
@@ -51,7 +51,7 @@ namespace AuctionService.Controllers
             var result = await auctionDbContext.SaveChangesAsync() > 0;
 
             if (!result)
-                return BadRequest("Couldnt save changes to database");
+                return BadRequest("Couldn't save changes to database");
 
             return CreatedAtAction(nameof(GetAuctionById),
                 new { auction.Id }, mapper.Map<AuctionDto>(auction));
@@ -64,7 +64,7 @@ namespace AuctionService.Controllers
             var auction = await auctionDbContext.Auctions.Include(x => x.Item).FirstOrDefaultAsync(x => x.Id == id);
 
             if (auction == null) return NotFound();
-            //TODO: add curent user as a seller and winner
+            //TODO: add current user as a seller and winner
 
             auction.Item.Make = updateAuctionDto.Make ?? auction.Item.Make;
             auction.Item.Model = updateAuctionDto.Model ?? auction.Item.Model;
@@ -75,7 +75,7 @@ namespace AuctionService.Controllers
             var result = await auctionDbContext.SaveChangesAsync() > 0;
 
             if (!result)
-                return BadRequest("Couldnt update database");
+                return BadRequest("Couldn't update database");
 
             return Ok();
         }
@@ -87,14 +87,14 @@ namespace AuctionService.Controllers
 
             if (auction == null) return NotFound();
 
-            //TODO: add curent user as a seller and winner
+            //TODO: add current user as a seller and winner
 
             auctionDbContext.Remove(auction);
 
             var result = await auctionDbContext.SaveChangesAsync() > 0;
 
             if (!result)
-                return BadRequest("Couldnt update database");
+                return BadRequest("Couldn't update database");
 
             return Ok();
         }
