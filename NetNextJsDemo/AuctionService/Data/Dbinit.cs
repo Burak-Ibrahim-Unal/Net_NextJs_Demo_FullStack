@@ -9,12 +9,12 @@ namespace AuctionService.Data
         public static void InitDb(WebApplication webApplication)
         {
             using var scope = webApplication.Services.CreateScope();
-            SeedData(scope.ServiceProvider.GetService<AuctionDbContext>());
+            SeedData(scope.ServiceProvider.GetService<AuctionDbContext>()!);
         }
 
         private static void SeedData(AuctionDbContext auctionDbContext)
         {
-            auctionDbContext.Database.Migrate();
+            auctionDbContext!.Database.Migrate();
 
             if (auctionDbContext.Auctions.Any()) {
                 Console.WriteLine("There is auction data...Database update canceled");
