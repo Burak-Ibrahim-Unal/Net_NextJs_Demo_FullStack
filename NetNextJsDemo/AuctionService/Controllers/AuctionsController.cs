@@ -3,7 +3,6 @@ using AuctionService.DTOs;
 using AuctionService.Entities;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -78,7 +77,7 @@ namespace AuctionService.Controllers
             if (!result)
                 return BadRequest("Couldnt update database");
 
-            return Ok(); ;
+            return Ok();
         }
 
         [HttpDelete("{id:guid}")]
